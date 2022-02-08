@@ -14,7 +14,7 @@ public class TwoSum {
 	 * Because nums[0] + nums[1] == 9, we return [0, 1]. Example 2: Input: nums =
 	 * [3,2,4], target = 6 Output: [1,2]
 	 */
-	public int[] twoSum(int[] nums, int target) {
+	/*public int[] twoSum(int[] nums, int target) {
 		String result2 = "";
 		for (int i = 0; i < nums.length; i++) {
 			for (int j = i + 1; j < nums.length; j++) {
@@ -27,6 +27,18 @@ public class TwoSum {
 		int[] result = new int[arr.length];
 		for (int i = 0; i < arr.length; i++) {
 			result[i]= Integer.parseInt(arr[i]);
+		}
+		return result;
+	}*/
+	public int[] twoSum(int[] nums, int target) {
+		int[] result = new int[2];
+		for (int i = 0; i < nums.length; i++) {
+			for (int j = i + 1; j < nums.length; j++) {
+				if ((nums[i] + nums[j]) == target) {
+					result[0] = i;
+					result[1] = j;
+				}
+			}
 		}
 		return result;
 	}
