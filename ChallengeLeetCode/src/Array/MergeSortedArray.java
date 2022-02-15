@@ -13,7 +13,7 @@ public class MergeSortedArray {
 		for (int i = 0; i < m; i++) {
 			if (ai < nums1[i]) {// truong hop: neu phan tu mang 2 < mang 1
 				isChanged = true;
-				for (int j = m - 1; j >= m; j--) {//
+				for (int j = m - 1; j >= i; j--) {//
 					nums1[j + 1] = nums1[j];// dich phan tu trong mang a sang phai 1 don vi
 				}
 				nums1[i] = ai; // gan phan tu mang 2 vao mang 1, tai vi tri phan tu lon hon dau tien
