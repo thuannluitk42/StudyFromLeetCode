@@ -1,6 +1,4 @@
 package Array;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class TwoSum {
@@ -28,7 +26,7 @@ public class TwoSum {
 		for (int i = 0; i < arr.length; i++) {
 			result[i]= Integer.parseInt(arr[i]);
 		}
-		return result;
+		return result; 
 	}*/
 	public int[] twoSum(int[] nums, int target) {
 		int[] result = new int[2];
