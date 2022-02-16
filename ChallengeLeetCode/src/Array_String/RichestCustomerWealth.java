@@ -18,5 +18,4 @@ public class RichestCustomerWealth {
 		}
 		return max;
 	}
-
 }
