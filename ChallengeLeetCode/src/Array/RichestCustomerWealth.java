@@ -13,7 +13,7 @@ public class RichestCustomerWealth {
 				assetOneCustomer += accounts[i][j];
 			}
 			if (assetOneCustomer > max) {
-				max = assetOneCustomer;
+				max = assetOneCustomer; 
 			}
 		}
 		return max;
