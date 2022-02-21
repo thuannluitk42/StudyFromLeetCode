@@ -65,12 +65,60 @@ public class SortBasic {
 		}
 	}
 
+	// phan merge sort
+
+	public static int[] merge(int[] a1, int[] a2) {
+		int n = a1.length + a2.length;
+		int[] result = new int[n];
+		int i = 0, i1 = 0, i2 = 0;
+		while (i < n) {
+			if (i1 < a1.length && i2 < a2.length) { // a1 & a2 != rong
+				if (a1[i1] <= a2[i2]) { // a1 nho hon
+					result[i] = a1[i1];
+					i++;
+					i1++;
+				} else { // a2 nho hon
+					result[i] = a2[i2];
+					i++;
+					i2++;
+				}
+			} else { // a1 rong hoac a2 rong
+				if (i1 < a1.length) {// a1 ok
+					result[i] = a1[i1];
+					i++;
+					i1++;
+				} else {// a2 ok
+					result[i] = a2[i2];
+					i++;
+					i2++;
+				}
+			}
+		}
+		return result;
+	}
+
+	public static int[] mergeSort(int a[], int L, int R) {
+		// THDB DKD
+		if (L > R)
+			return new int[0];
+		if (L == R) {
+			int[] singleElement = { a[L] };
+			return singleElement;
+		}
+		// Chia ra
+		System.out.println("Chia: " + L + " - " + R);
+		int k = (L + R) / 2;
+		int[] a1 = mergeSort(a, L, k);
+		int[] a2 = mergeSort(a, k + 1, R);
+		// Tron vao: a1, a2 la cac mang da duoc sap xep
+		int[] result = merge(a1, a2);
+		return result;
+	}
+
 	public static void main(String[] args) {
 		int[] ar2 = { 1, 2, 1, 2, 1, 3, 2 };
 		int[] ar3 = { 5, 3, 2, 7, 8, 1, 2 };
 		int[] ar4 = { 1, 2, 3, 4, 5, 8, 7 };
-		int n = 9;
-		int n2 = 7;
 
 		bubbleSort(ar2);
 		selectionSort(ar3);
