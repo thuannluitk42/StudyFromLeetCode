@@ -26,6 +26,14 @@ public class MyLinkedList {
 			}
 		}
 	}
+	
+	public static Node addNode(Node headNode, int value) {
+		Node newNode = new Node(value);
+		if (headNode != null) {
+			newNode.next = headNode;
+		}
+		return newNode;
+	}
 
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
@@ -36,7 +44,7 @@ public class MyLinkedList {
 		n2.next = n3;
 		
 		printLinkedList(n1);
-		printLinkedList(n2);
-		printLinkedList(n3);
+		Node newList = addNode(n1, 0);
+		printLinkedList(newList);
 	}
 }
