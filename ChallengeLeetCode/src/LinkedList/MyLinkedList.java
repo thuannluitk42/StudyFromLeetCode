@@ -80,6 +80,30 @@ public class MyLinkedList {
 		return headNode;
 	}
 
+	public static Node removeAtTail(Node headNode) {
+
+		if (headNode == null) {
+			return null;
+		}
+
+		// B1. Xac dinh last va previous
+		Node lastNode = headNode;
+		Node prevNode = null;
+
+		while (lastNode.next != null) { // lastNode.next = null
+			prevNode = lastNode;
+			lastNode = lastNode.next;
+		}
+		
+		if (prevNode == null) {
+			return null;
+		} else {
+			prevNode.next = lastNode.next;
+		}
+
+		return headNode;
+	}
+
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
@@ -89,7 +113,7 @@ public class MyLinkedList {
 		n2.next = n3;
 
 		printLinkedList(n1);
-		n1 = removeAtHead(n1);
+		n1 = removeAtTail(n1);
 		printLinkedList(n1);
 	}
 }
