@@ -82,8 +82,11 @@ public class MyLinkedList {
 		n2.next = n3;
 
 		printLinkedList(n1);
-		// Node newList = addNode(n1, 0);
-		n1 = addToTail(n1, 0);
+		n1 = addToIndex(n1, 0, 0);
+		printLinkedList(n1);
+		n1 = addToIndex(n1, 4, 0);
+		printLinkedList(n1);
+		n1 = addToIndex(n1, 1, 1);
 		printLinkedList(n1);
 	}
 }
