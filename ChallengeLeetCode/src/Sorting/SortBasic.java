@@ -1,5 +1,8 @@
 package Sorting;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class SortBasic {
 	private static void printArray(int i, int[] ar) {
 		System.out.print("i = " + i + ": ");
@@ -115,13 +118,57 @@ public class SortBasic {
 		return result;
 	}
 
+	public static void quickSort(int[] a, int L, int R) {
+		// dieu kien dung
+		if (L >= R)
+			return;
+		// B1. Chon khoa
+		int key = a[(L + R) / 2];
+		// B2. Phan bo mang theo khoa
+		int k = partition(a, L, R, key);
+		System.out.println("L=" + L + " R=" + R + " key = " + key + " k = " + k);
+		System.out.println(Arrays.toString(Arrays.copyOfRange(a, L, R + 1)));
+		System.out.println("============================");
+		// B3. Chia doi mang => Lap lai
+		quickSort(a, L, k - 1);
+		quickSort(a, k, R);
+	}
+
+	public static int partition(int[] a, int L, int R, int key) {
+		int iL = L;
+		int iR = R;
+		while (iL <= iR) {
+			// Voi iL, di tim phan tu >= key de doi cho
+			while (a[iL] < key)
+				iL++;
+			// Voi iR, di tim phan tu <= key de doi cho
+			while (a[iR] > key)
+				iR--;
+			// doi cho 2 phan tu dang ung khong dung vi tri
+			if (iL <= iR) {
+				int temp = a[iL];
+				a[iL] = a[iR];
+				a[iR] = temp;
+				iL++;
+				iR--;
+			}
+		}
+
+		return iL;
+	}
+
 	public static void main(String[] args) {
 		int[] ar2 = { 1, 2, 1, 2, 1, 3, 2 };
 		int[] ar3 = { 5, 3, 2, 7, 8, 1, 2 };
 		int[] ar4 = { 1, 2, 3, 4, 5, 8, 7 };
 
-		bubbleSort(ar2);
-		selectionSort(ar3);
-		insertSort(ar4);
+//		bubbleSort(ar2);
+//		selectionSort(ar3);
+//		insertSort(ar4);
+		System.out.println(Arrays.toString(ar3));
+		System.out.println("Start");
+		quickSort(ar3, 0, ar3.length - 1);
+		System.out.println("End");
+		System.out.println(Arrays.toString(ar3));
 	}
 }
