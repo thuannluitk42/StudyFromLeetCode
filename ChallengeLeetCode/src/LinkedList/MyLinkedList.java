@@ -34,6 +34,22 @@ public class MyLinkedList {
 		}
 		return newNode;
 	}
+	
+	public static Node addToTail(Node headNode, int value) {
+		Node newNode = new Node(value);
+		if (headNode == null) {
+			return newNode;
+		} else {
+			//B1:  xac dinh last node(last.node = null)
+			Node lastNode = headNode;
+			while(lastNode.next != null) {
+				lastNode = lastNode.next;
+			}
+			// B2: gan next cho lastNode = new Node
+			lastNode.next = newNode;
+		}
+		return headNode;
+	}
 
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
@@ -44,7 +60,8 @@ public class MyLinkedList {
 		n2.next = n3;
 		
 		printLinkedList(n1);
-		Node newList = addNode(n1, 0);
-		printLinkedList(newList);
+		//Node newList = addNode(n1, 0);
+		n1 = addToTail(n1, 0);
+		printLinkedList(n1);
 	}
 }
