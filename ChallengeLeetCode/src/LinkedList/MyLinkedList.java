@@ -73,6 +73,13 @@ public class MyLinkedList {
 		return headNode;
 	}
 
+	public static Node removeAtHead(Node headNode) {
+		if (headNode != null) {
+			return headNode.next;
+		}
+		return headNode;
+	}
+
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
@@ -82,11 +89,7 @@ public class MyLinkedList {
 		n2.next = n3;
 
 		printLinkedList(n1);
-		n1 = addToIndex(n1, 0, 0);
-		printLinkedList(n1);
-		n1 = addToIndex(n1, 4, 0);
-		printLinkedList(n1);
-		n1 = addToIndex(n1, 1, 1);
+		n1 = removeAtHead(n1);
 		printLinkedList(n1);
 	}
 }
