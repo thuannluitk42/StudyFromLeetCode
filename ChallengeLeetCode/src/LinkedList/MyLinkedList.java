@@ -26,23 +26,23 @@ public class MyLinkedList {
 			}
 		}
 	}
-	
-	public static Node addNode(Node headNode, int value) {
+
+	public static Node addToHead(Node headNode, int value) {
 		Node newNode = new Node(value);
 		if (headNode != null) {
 			newNode.next = headNode;
 		}
 		return newNode;
 	}
-	
+
 	public static Node addToTail(Node headNode, int value) {
 		Node newNode = new Node(value);
 		if (headNode == null) {
 			return newNode;
 		} else {
-			//B1:  xac dinh last node(last.node = null)
+			// B1: xac dinh last node(last.node = null)
 			Node lastNode = headNode;
-			while(lastNode.next != null) {
+			while (lastNode.next != null) {
 				lastNode = lastNode.next;
 			}
 			// B2: gan next cho lastNode = new Node
@@ -51,16 +51,38 @@ public class MyLinkedList {
 		return headNode;
 	}
 
+	public static Node addToIndex(Node headNode, int value, int index) {
+		if (index == 0) {
+			return addToHead(headNode, value);
+		} else {
+			// B1. Tim vi tri can them
+			Node newNode = new Node(value);
+			Node curNode = headNode;
+			int count = 0;
+			while (curNode != null) {
+				count++;
+				if (count == index) {
+					// thuc hien add
+					newNode.next = curNode.next;
+					curNode.next = newNode;
+					break;
+				}
+				curNode = curNode.next;
+			}
+		}
+		return headNode;
+	}
+
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
 		Node n2 = new Node(2);
 		Node n3 = new Node(3);
-		
+
 		n1.next = n2;
 		n2.next = n3;
-		
+
 		printLinkedList(n1);
-		//Node newList = addNode(n1, 0);
+		// Node newList = addNode(n1, 0);
 		n1 = addToTail(n1, 0);
 		printLinkedList(n1);
 	}
