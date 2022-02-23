@@ -1,7 +1,5 @@
 package LinkedList;
 
-import java.awt.HeadlessException;
-
 public class MyLinkedList {
 	public static class Node {
 		int value;
@@ -135,7 +133,7 @@ public class MyLinkedList {
 				if (curNode != null) {
 					prevNode.next = curNode.next;
 				}
-				
+
 			}
 		}
 		return headNode;
@@ -150,11 +148,11 @@ public class MyLinkedList {
 		n2.next = n3;
 
 		printLinkedList(n1);
-		n1 = removeAtIndex(n1,0);
+		n1 = removeAtIndex(n1, 0);
 		printLinkedList(n1);
-		n1 = removeAtIndex(n1,1);
+		n1 = removeAtIndex(n1, 1);
 		printLinkedList(n1);
-		n1 = removeAtIndex(n1,2);
+		n1 = removeAtIndex(n1, 2);
 		printLinkedList(n1);
 	}
 }
