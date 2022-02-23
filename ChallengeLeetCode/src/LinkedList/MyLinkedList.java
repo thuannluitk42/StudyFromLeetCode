@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.awt.HeadlessException;
+
 public class MyLinkedList {
 	public static class Node {
 		int value;
@@ -94,13 +96,48 @@ public class MyLinkedList {
 			prevNode = lastNode;
 			lastNode = lastNode.next;
 		}
-		
+
 		if (prevNode == null) {
 			return null;
 		} else {
 			prevNode.next = lastNode.next;
 		}
 
+		return headNode;
+	}
+
+	public static Node removeAtIndex(Node headNode, int index) {
+		if (headNode == null || index < 0) {
+			return null;
+		}
+		if (index == 0) {
+			return removeAtHead(headNode);
+		}
+		Node curNode = headNode;
+		Node prevNode = null;
+		int count = 0;
+		boolean isFound = false;
+		while (curNode != null) {
+			if (count == index) {
+				// remove curNode
+				isFound = true;
+				break;
+			}
+			prevNode = curNode;
+			curNode = curNode.next;
+			count++;
+		}
+		// remove cur
+		if (isFound) {
+			if (prevNode == null) {// curNode is last node
+				return null;
+			} else {
+				if (curNode != null) {
+					prevNode.next = curNode.next;
+				}
+				
+			}
+		}
 		return headNode;
 	}
 
@@ -113,7 +150,11 @@ public class MyLinkedList {
 		n2.next = n3;
 
 		printLinkedList(n1);
-		n1 = removeAtTail(n1);
+		n1 = removeAtIndex(n1,0);
+		printLinkedList(n1);
+		n1 = removeAtIndex(n1,1);
+		printLinkedList(n1);
+		n1 = removeAtIndex(n1,2);
 		printLinkedList(n1);
 	}
 }
